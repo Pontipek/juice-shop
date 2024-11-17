@@ -41,12 +41,7 @@ module.exports = function productReviews () {
           console.log('Author mismatch or review not found'); // Debugging line
           return res.status(403).json({ error: 'Forbidden' }); // Forbidden if authors do not match or review doesn't exist
         }
-
-        // Check if the user's email matches the author's email before updating the message
-        if (review.author !== user.data.email) {
-          return res.status(403).json({ error: 'Forbidden: Author mismatch' }); // Prevent update if emails don't match
-        }
-
+        
         // If the review is valid, proceed to update it
         return db.reviewsCollection.update(
           { _id: reviewId, author: user.data.email }, // Ensure only the correct author can update
@@ -55,6 +50,15 @@ module.exports = function productReviews () {
         ).then((result: { modified: number, original: Array<{ author: string }> }) => {
           if (!result.original || result.original.length === 0) {
             return res.status(500).json({ error: 'Failed to retrieve the original review' });
+          }
+           // Ensure the author email hasn't been tampered with
+          if (review.author !== user.data.email) {
+            return res.status(403).json({ error: 'You are not the author of this review' });
+          }
+
+          // Ensure that the author email has not been tampered with in the request body
+          if (req.body.author && req.body.author !== review.author) {
+            return res.status(400).json({ error: 'Author email cannot be changed' });
           }
 
           res.json(result); // Send response after update
