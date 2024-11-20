@@ -1,16 +1,23 @@
 # vuln-code-snippet start resetPasswordBjoernOwaspChallenge resetPasswordBjoernChallenge resetPasswordJimChallenge resetPasswordBenderChallenge resetPasswordUvoginChallenge
-- # vuln-code-snippet neutral-line resetPasswordJimChallenge
-  question: 'Your eldest siblings middle name?' # vuln-code-snippet vuln-line resetPasswordJimChallenge
+# Previous vulnerable questions
+# question: 'Your eldest siblings middle name?' # vuln-code-snippet vuln-line resetPasswordJimChallenge
+# question: "Mother's maiden name?"
+# question: "Mother's birth date? (MM/DD/YY)"
+# question: "Father's birth date? (MM/DD/YY)"
+# question: "Maternal grandmother's first name?"
+# question: "Paternal grandmother's first name?"
+- # Resolved vuln-code-snippet neutral-line resetPasswordJimChallenge
+  question: 'What is your favorite number?' 
 -
-  question: "Mother's maiden name?"
+  question: "In what city or town did your mother and father meet?"
 -
-  question: "Mother's birth date? (MM/DD/YY)"
+  question: "What is the title of the first book you ever read?"
 -
-  question: "Father's birth date? (MM/DD/YY)"
+  question: "What is the name of your favorite vacation destination?"
 -
-  question: "Maternal grandmother's first name?"
+  question: "What was your dream job as a child?"
 -
-  question: "Paternal grandmother's first name?"
+  question: "What is the name of the town where you first met your partner?"
 - # vuln-code-snippet neutral-line resetPasswordBjoernOwaspChallenge
   question: 'Name of your favorite pet?' # vuln-code-snippet vuln-line resetPasswordBjoernOwaspChallenge
 -
